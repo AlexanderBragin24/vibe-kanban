@@ -1,0 +1,149 @@
+---
+title: "Backend API"
+description: "Endpoints exposed by the Vibe Kanban backend and how to use them."
+---
+
+Vibe Kanban ships with an HTTP API under the `/api` prefix. You can use it to manage projects, tasks, task attempts, and supporting resources directly from scripts or other tools.
+
+## Base behaviour
+- **Base URL**: the server nests all API routes under `/api` (for example, `http://localhost:3000/api/projects`).【F:crates/server/src/routes/mod.rs†L27-L52】
+- **Response shape**: handlers wrap results in an `ApiResponse` envelope with `success`, optional `data`, optional `error_data`, and optional `message` fields; errors use `success: false` and set either `message` or structured `error_data`.【F:crates/utils/src/response.rs†L4-L55】
+- **Health check**: `GET /api/health` returns `OK` to confirm the backend is running.【F:crates/server/src/routes/mod.rs†L29-L45】【F:crates/server/src/routes/health.rs†L1-L5】
+
+### Response envelope
+
+<ResponseField name="success" type="boolean">
+True when the request completed without validation or runtime errors.
+</ResponseField>
+
+<ResponseField name="data" type="any | null">
+Route-specific payload; structures are detailed in the sections below.
+</ResponseField>
+
+<ResponseField name="message" type="string | null">
+Human-readable error information when `success` is `false`.
+</ResponseField>
+
+<ResponseField name="error_data" type="any | null">
+Structured error payloads for routes that return typed error information.
+</ResponseField>
+
+<Note>
+All endpoints are served by the Rust backend in `crates/server`. Changes to routers require a rebuild or restart of the server process.
+</Note>
+
+Routes that return database-backed models use typed response envelopes instead of the generic base wrapper so you can rely on concrete `data` shapes:
+
+- `ApiResponseProject`, `ApiResponseProjects`, `ApiResponseGitBranches`, and `ApiResponseSearchResults` for project routes.
+- `ApiResponseTask`, `ApiResponseTaskWithAttemptStatuses`, and `ApiResponseShareTaskResponse` for task CRUD and sharing.
+- `ApiResponseTaskAttempt` and `ApiResponseTaskAttempts` for task attempt listings and detail fetches.
+- `ApiResponseTag` and `ApiResponseTags` for tag management.
+- `ApiResponseScratch` and `ApiResponseScratches` for scratch buffers.
+- `ApiResponseAvailability` for editor and agent availability probes.
+- `ApiResponseCreateOrganization`, `ApiResponseGetOrganization`, `ApiResponseListOrganizations`, and `ApiResponseOrganization` for organisation CRUD.
+- `ApiResponseCreateInvitation`, `ApiResponseListInvitations`, `ApiResponseGetInvitation`, and `ApiResponseAcceptInvitation` for invitation flows.
+- `ApiResponseListMembers` and `ApiResponseUpdateMemberRole` for member management.
+- `ApiResponseRemoteProject`, `ApiResponseRemoteProjects`, and `ApiResponseRemoteProjectMembers` for remote project lookups and member listings.
+
+## Authentication and session endpoints
+- `POST /api/auth/handoff/init` – start an OAuth handoff and receive an `authorize_url` plus `handoff_id` to complete the flow.【F:crates/server/src/routes/oauth.rs†L23-L69】
+- `GET /api/auth/handoff/complete` – finish the OAuth flow using `handoff_id` and `app_code` query parameters and persist tokens.【F:crates/server/src/routes/oauth.rs†L23-L80】
+- `POST /api/auth/logout` – clear stored OAuth credentials.【F:crates/server/src/routes/oauth.rs†L23-L29】
+- `GET /api/auth/status` – returns cached user profile and token status information.【F:crates/server/src/routes/oauth.rs†L23-L29】
+
+## Configuration and capability endpoints
+- `GET /api/info` – combined user system information, cached executor profiles, environment metadata, and capability flags for each executor.【F:crates/server/src/routes/config.rs†L32-L110】
+- `PUT /api/config` – replace the persisted configuration file after validating fields such as the git branch prefix.【F:crates/server/src/routes/config.rs†L32-L142】
+- `GET /api/sounds/{sound}` – download bundled notification sounds.【F:crates/server/src/routes/config.rs†L32-L139】
+- `GET/POST /api/mcp-config?executor=` – read or update MCP server definitions for a specific executor profile.【F:crates/server/src/routes/config.rs†L32-L206】
+- `GET/PUT /api/profiles` – read or update executor profile definitions stored on disk.【F:crates/server/src/routes/config.rs†L32-L205】【F:crates/server/src/routes/config.rs†L207-L235】
+- `GET /api/editors/check-availability?editor_type=` – probe whether a configured editor is available on the host system.【F:crates/server/src/routes/config.rs†L32-L201】
+- `GET /api/agents/check-availability?executor=` – report availability info for a coding agent profile.【F:crates/server/src/routes/config.rs†L32-L235】
+
+## Project endpoints
+- `GET/POST /api/projects` – list existing projects or create a new local git-backed project (optionally initialising a repository).【F:crates/server/src/routes/projects.rs†L657-L679】
+- `GET/PUT/DELETE /api/projects/{id}` – fetch, update, or delete a project; updates cover name, repo path, and scripts.【F:crates/server/src/routes/projects.rs†L657-L679】
+- `GET /api/projects/{id}/branches` – enumerate all git branches for a project repository.【F:crates/server/src/routes/projects.rs†L657-L666】
+- `GET /api/projects/{id}/search` – search for file paths in the repository with optional caching and ranking by git history.【F:crates/server/src/routes/projects.rs†L657-L666】【F:crates/server/src/routes/projects.rs†L470-L655】
+- `POST /api/projects/{id}/open-editor` – open the project in a configured local or remote editor and optionally return a URL for remote opening.【F:crates/server/src/routes/projects.rs†L657-L676】【F:crates/server/src/routes/projects.rs†L412-L441】
+- Remote project linking: `POST /api/projects/{id}/link` to attach to an existing remote project, `DELETE /api/projects/{id}/link` to unlink, and `POST /api/projects/{id}/link/create` to create-and-link a remote project in one step.【F:crates/server/src/routes/projects.rs†L657-L676】
+- `GET /api/projects/{id}/remote/members` – list remote project members when a project is linked.【F:crates/server/src/routes/projects.rs†L657-L666】
+- `GET /api/remote-projects/{remote_project_id}` – fetch remote project details by ID.【F:crates/server/src/routes/projects.rs†L677-L684】
+
+<ResponseField name="data" type="Project | Project[]">Project documents include identifiers, repo location, optional setup/dev/cleanup scripts, optional copy file lists, and timestamps.【F:crates/db/src/models/project.rs†L25-L58】</ResponseField>
+
+<ResponseField name="data" type="GitBranch[]" optional>Branch listings note the branch name, whether it is current, whether it is remote, and the last commit timestamp.【F:crates/services/src/services/git.rs†L60-L67】</ResponseField>
+
+<ResponseField name="data" type="SearchResult[]" optional>Repository search results return the path, whether the match is a file, and the match type (`file_name`, `directory_name`, `full_path`).【F:crates/db/src/models/project.rs†L61-L73】</ResponseField>
+
+## Task endpoints (scoped per project)
+- `GET/POST /api/projects/{project_id}/tasks` – list tasks for a project or create a new task; you can attach image IDs during creation.【F:crates/server/src/routes/tasks.rs†L419-L423】
+- `GET /api/projects/{project_id}/tasks/stream/ws` – websocket stream of task events for the project.【F:crates/server/src/routes/tasks.rs†L419-L423】
+- `POST /api/projects/{project_id}/tasks/create-and-start` – create a task and immediately start an attempt using the chosen executor profile and base branch.【F:crates/server/src/routes/tasks.rs†L419-L423】【F:crates/server/src/routes/tasks.rs†L224-L252】
+- `GET/PUT/DELETE /api/projects/{project_id}/tasks/{task_id}` – read, update, or delete a task (deletion checks running processes and cleans up worktrees).【F:crates/server/src/routes/tasks.rs†L414-L427】【F:crates/server/src/routes/tasks.rs†L258-L338】
+- `POST /api/projects/{project_id}/tasks/{task_id}/share` – publish a task to the sharing service and receive a shared task ID.【F:crates/server/src/routes/tasks.rs†L408-L426】【F:crates/server/src/routes/tasks.rs†L376-L405】
+
+<ResponseField name="data" type="TaskWithAttemptStatus[]">Task listings flatten the base task fields (IDs, title, description, status, parent attempt, shared task link, timestamps) with flags for in-progress/merged/failed attempts and the executor name for the latest attempt.【F:crates/db/src/models/task.rs†L25-L47】</ResponseField>
+
+<ResponseField name="data" type="Task">Single-task fetches and updates return the base task document, preserving status, description, parent attempt and shared task identifiers.【F:crates/db/src/models/task.rs†L25-L36】</ResponseField>
+
+<ResponseField name="data" type="ShareTaskResponse">Sharing a task returns the generated `shared_task_id` UUID.【F:crates/server/src/routes/tasks.rs†L376-L405】</ResponseField>
+
+## Task attempt endpoints
+- `GET/POST /api/task-attempts` – list attempts (optionally filtered by task) or create a new attempt; creation also starts the executor for the attempt branch.【F:crates/server/src/routes/task_attempts.rs†L1547-L1576】
+- `GET /api/task-attempts/{id}` – fetch a specific attempt; additional actions are exposed as subroutes on the same base path.【F:crates/server/src/routes/task_attempts.rs†L1548-L1577】
+- Execution and git operations for an attempt include follow-up instructions, agent setup, GitHub CLI setup, commit comparison, dev server start, branch status, diff streaming (`/diff/ws`), merge, push (normal or force), rebase, abort conflicts, pull request creation or attachment, and editor launch.【F:crates/server/src/routes/task_attempts.rs†L1548-L1565】
+- Control endpoints such as `/stop`, `/change-target-branch`, `/rename-branch`, plus nested `/images` and `/queue` routers handle attachments and job queue management per attempt.【F:crates/server/src/routes/task_attempts.rs†L1548-L1578】
+
+<ResponseField name="data" type="TaskAttempt | TaskAttempt[]">Task attempt payloads include IDs, owning task IDs, container references, branch and target branch names, executor selection, worktree flags, optional setup completion timestamps, and audit timestamps.【F:crates/db/src/models/task_attempt.rs†L25-L50】</ResponseField>
+
+<ResponseField name="data" type="object" optional>Queue and execution helper routes reuse the same envelope and populate task-attempt metadata or derived views (for example branch status, compare results, dev-server addresses). Payload shapes are route-specific but always appear under `data` when `success: true`.</ResponseField>
+
+## Execution process streaming
+- `GET /api/execution-processes/stream/ws` – websocket stream of execution process lifecycle events across attempts.【F:crates/server/src/routes/execution_processes.rs†L235-L248】
+- `GET /api/execution-processes/{id}` – fetch an execution process, stop it, or stream raw/normalised logs over websockets via `/stop`, `/raw-logs/ws`, and `/normalized-logs/ws`.【F:crates/server/src/routes/execution_processes.rs†L235-L250】
+
+## Image upload and retrieval
+- `POST /api/images/upload` – upload a generic image (20MB limit).【F:crates/server/src/routes/mod.rs†L29-L45】【F:crates/server/src/routes/images.rs†L256-L270】
+- `GET /api/images/{id}/file` – fetch the stored image binary.【F:crates/server/src/routes/images.rs†L256-L270】
+- `DELETE /api/images/{id}` – remove an image resource.【F:crates/server/src/routes/images.rs†L256-L270】
+- Task-scoped helpers: `GET /api/images/task/{task_id}` for image metadata, `GET /api/images/task/{task_id}/metadata` for details, and `POST /api/images/task/{task_id}/upload` to attach uploads to a task.【F:crates/server/src/routes/images.rs†L256-L269】
+
+## Sharing and collaboration
+- `POST /api/shared-tasks/{shared_task_id}/assign` – reassign a shared task to another user (optional optimistic version).【F:crates/server/src/routes/shared_tasks.rs†L30-L37】【F:crates/server/src/routes/shared_tasks.rs†L39-L66】
+- `DELETE /api/shared-tasks/{shared_task_id}` – remove a shared task from the remote sharing service.【F:crates/server/src/routes/shared_tasks.rs†L30-L37】
+- `POST /api/approvals/{id}/respond` – answer approval prompts emitted by tools, recording analytics and returning the resulting status.【F:crates/server/src/routes/approvals.rs†L12-L44】
+- `GET /api/events` – Server-Sent Events feed combining historical and live events from the execution runtime.【F:crates/server/src/routes/events.rs†L15-L28】
+
+## Tags
+- `GET/POST /api/tags` – list tags or create a tag for task organisation.【F:crates/server/src/routes/tags.rs†L88-L97】
+- `PUT/DELETE /api/tags/{tag_id}` – update or delete a tag (middleware loads the tag before performing the action).【F:crates/server/src/routes/tags.rs†L88-L97】
+
+## Filesystem helpers
+- `GET /api/filesystem/directory?path=` – list entries for a given directory path, respecting server-side filtering rules.【F:crates/server/src/routes/filesystem.rs†L70-L99】
+- `GET /api/filesystem/git-repos` – enumerate known git repositories on disk to help users select projects.【F:crates/server/src/routes/filesystem.rs†L70-L99】
+
+## Container context lookup
+- `GET /api/containers/info?ref=` – resolve a container reference into attempt, task, and project IDs.【F:crates/server/src/routes/containers.rs†L29-L74】
+- `GET /api/containers/attempt-context?ref=` – return the stored attempt context (repo paths, branches, etc.) for a container ref.【F:crates/server/src/routes/containers.rs†L52-L74】
+
+## Scratch buffers
+- `GET /api/scratch` – list scratch buffers stored by the backend (grouped by type).【F:crates/server/src/routes/scratch.rs†L147-L159】
+- `GET/POST/PUT/DELETE /api/scratch/{scratch_type}/{id}` – CRUD operations for a scratch entry, keyed by type and ID.【F:crates/server/src/routes/scratch.rs†L147-L160】
+- `GET /api/scratch/{scratch_type}/{id}/stream/ws` – websocket stream of updates for a scratch entry.【F:crates/server/src/routes/scratch.rs†L147-L160】
+
+## Organisation and remote collaboration
+- `GET/POST /api/organizations` – list organisations from the remote service or create a new one.【F:crates/server/src/routes/organizations.rs†L26-L57】
+- `GET/PATCH/DELETE /api/organizations/{id}` – retrieve, update, or delete an organisation record.【F:crates/server/src/routes/organizations.rs†L26-L57】
+- Invitation management: create invitations (`POST /api/organizations/{org_id}/invitations`), list invitations, revoke them, and accept invites via `/api/invitations/{token}` and `/api/invitations/{token}/accept`.【F:crates/server/src/routes/organizations.rs†L26-L57】
+- Member management: list members for an organisation and remove or update member roles via `/organizations/{org_id}/members` and `/organizations/{org_id}/members/{user_id}` routes.【F:crates/server/src/routes/organizations.rs†L26-L56】
+
+<ResponseField name="data" type="ListOrganizationsResponse | CreateOrganizationResponse | GetOrganizationResponse | Organization">Organisation calls return either a list of organisations with your role, a single organisation payload, or the updated organisation document after patch operations.【F:crates/utils/src/api/organizations.rs†L25-L78】</ResponseField>
+
+<ResponseField name="data" type="CreateInvitationResponse | ListInvitationsResponse | GetInvitationResponse | AcceptInvitationResponse">Invitation routes return the created invitation, all invitations for an organisation, invitation metadata for a token, or the organisation and role granted when you accept one.【F:crates/utils/src/api/organizations.rs†L80-L126】</ResponseField>
+
+<ResponseField name="data" type="ListMembersResponse | UpdateMemberRoleResponse">Member routes either list members (including profile data) or return the updated `user_id` and `role` after a role change.【F:crates/utils/src/api/organizations.rs†L128-L161】</ResponseField>
+
+<Check>
+You can exercise these routes locally by running `pnpm run dev` and issuing HTTP requests to the reported backend port. Keep requests scoped to `/api` and reuse the health check to confirm the server is ready before sending mutating calls.
+</Check>
