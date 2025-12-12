@@ -21,20 +21,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
+                      "type": "string",
+                      "example": "OK"
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "string",
-                          "example": "OK"
-                        }
-                      }
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -138,20 +146,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -179,20 +195,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -219,20 +243,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "description": "Route-specific payload"
-                        }
-                      }
+                      "description": "Route-specific payload"
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -258,23 +290,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
-                        }
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -309,23 +349,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
-                        }
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -342,23 +390,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
-                        }
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -384,23 +440,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
-                        }
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -452,20 +516,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -695,20 +767,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "description": "Route-specific payload"
-                        }
-                      }
+                      "description": "Route-specific payload"
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1063,20 +1143,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "description": "Route-specific payload"
-                        }
-                      }
+                      "description": "Route-specific payload"
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1103,20 +1191,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1143,20 +1239,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1183,20 +1287,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1223,20 +1335,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1263,20 +1383,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1357,20 +1485,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1869,20 +2005,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -1909,20 +2053,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -2121,23 +2273,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
-                        }
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -2154,22 +2314,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        }
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -2195,20 +2363,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -2234,20 +2410,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -2458,20 +2642,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "description": "Route-specific payload"
-                        }
-                      }
+                      "description": "Route-specific payload"
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -2690,20 +2882,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      }
+                      "additionalProperties": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -3205,20 +3405,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ApiResponseBase"
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
                     },
-                    {
+                    "data": {
                       "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "description": "Route-specific payload"
-                        }
-                      }
+                      "description": "Route-specific payload"
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error_data": {
+                      "type": "object",
+                      "nullable": true,
+                      "additionalProperties": true
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -3781,235 +3989,347 @@
         }
       },
       "ApiResponseProject": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/Project"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/Project"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseProjects": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Project"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Project"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseTask": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/Task"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/Task"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseTaskWithAttemptStatuses": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TaskWithAttemptStatus"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskWithAttemptStatus"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseTaskAttempt": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/TaskAttempt"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/TaskAttempt"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseTaskAttempts": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TaskAttempt"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskAttempt"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseShareTaskResponse": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/ShareTaskResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ShareTaskResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseScratch": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/Scratch"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/Scratch"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseTag": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/Tag"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/Tag"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseTags": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseGitBranches": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/GitBranch"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GitBranch"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseSearchResults": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SearchResult"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchResult"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseAvailability": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/Availability"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/Availability"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseScratches": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Scratch"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Scratch"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "MemberRole": {
         "type": "string",
@@ -4430,265 +4750,401 @@
         ]
       },
       "ApiResponseOrganization": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/Organization"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/Organization"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseOrganizationWithRole": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/OrganizationWithRole"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/OrganizationWithRole"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseOrganizationsWithRoles": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/OrganizationWithRole"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizationWithRole"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseListOrganizations": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/ListOrganizationsResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ListOrganizationsResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseGetOrganization": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/GetOrganizationResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/GetOrganizationResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseCreateOrganization": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/CreateOrganizationResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/CreateOrganizationResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseInvitation": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/Invitation"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/Invitation"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseInvitations": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Invitation"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invitation"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseListInvitations": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/ListInvitationsResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ListInvitationsResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseCreateInvitation": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/CreateInvitationResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/CreateInvitationResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseGetInvitation": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/GetInvitationResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/GetInvitationResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseAcceptInvitation": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/AcceptInvitationResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/AcceptInvitationResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseListMembers": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/ListMembersResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ListMembersResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseUpdateMemberRole": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/UpdateMemberRoleResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/UpdateMemberRoleResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseRemoteProject": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/RemoteProject"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/RemoteProject"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseRemoteProjects": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/ListRemoteProjectsResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ListRemoteProjectsResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseRemoteProjectMembers": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/RemoteProjectMembersResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/RemoteProjectMembersResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "CreateFollowUpAttempt": {
         "type": "object",
@@ -5109,145 +5565,207 @@
         }
       },
       "ApiResponseExecutionProcess": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/ExecutionProcess"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ExecutionProcess"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseExecutionProcessWithGhCliError": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ExecutionProcess"
-              },
-              "error_data": {
-                "$ref": "#/components/schemas/GhCliSetupError"
-              }
-            }
+          "data": {
+            "$ref": "#/components/schemas/ExecutionProcess"
+          },
+          "error_data": {
+            "$ref": "#/components/schemas/GhCliSetupError"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
           }
-        ]
+        }
       },
       "ApiResponseRunAgentSetup": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/RunAgentSetupResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/RunAgentSetupResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseCommitCompare": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/CommitCompareResult"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/CommitCompareResult"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseBranchStatus": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/BranchStatus"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/BranchStatus"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseVoid": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "type": "null"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "type": "null"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseCreatePr": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "string"
-              },
-              "error_data": {
-                "$ref": "#/components/schemas/CreatePrError"
-              }
-            }
+          "data": {
+            "type": "string"
+          },
+          "error_data": {
+            "$ref": "#/components/schemas/CreatePrError"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
           }
-        ]
+        }
       },
       "ApiResponseAttachPr": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/AttachPrResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/AttachPrResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseTaskRelationships": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/TaskRelationships"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/TaskRelationships"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "QueueMessageRequest": {
         "type": "object",
@@ -5341,19 +5859,27 @@
         ]
       },
       "ApiResponseQueueStatus": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/QueueStatus"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/QueueStatus"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "CreateTask": {
         "type": "object",
@@ -5453,19 +5979,27 @@
         }
       },
       "ApiResponseTaskWithAttemptStatus": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/TaskWithAttemptStatus"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/TaskWithAttemptStatus"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ImageResponse": {
         "type": "object",
@@ -5543,52 +6077,76 @@
         ]
       },
       "ApiResponseImage": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/ImageResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ImageResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseImages": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ImageResponse"
-                }
-              }
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageResponse"
             }
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseImageMetadata": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/ImageMetadata"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/ImageMetadata"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "HandoffInitRequest": {
         "type": "object",
@@ -5698,34 +6256,50 @@
         "description": "Cached login status and optional profile details."
       },
       "ApiResponseAuthHandoff": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/HandoffInitResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/HandoffInitResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       },
       "ApiResponseOAuthStatus": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ApiResponseBase"
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          {
+          "data": {
+            "$ref": "#/components/schemas/StatusResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "error_data": {
             "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/StatusResponse"
-              }
-            }
+            "nullable": true,
+            "additionalProperties": true
           }
-        ]
+        }
       }
     }
   }
